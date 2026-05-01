@@ -18,6 +18,7 @@ A simple and clean web app to track solved DSA problems.
 ## 📸 Screenshot
 
 ![App Screenshot](./Public/Screenshot4.png)
+![App Screenshot](./Public/Screenshot2.png)
 
 ## 🚀 How to Run
 
