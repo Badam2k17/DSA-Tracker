@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
   const [problems, setProblems] = useState([]);
@@ -21,44 +22,45 @@ function App() {
   };
   const solvedCount = problems.filter((p) => p.solved).length;
   return (
-    <div
-      style={{
-        padding: "20px",
-        maxWidth: "500px",
-        margin: "auto",
-        fontFamily: "Arial",
-      }}
-    >
+    <div className="container">
       <h1>DSA Tracker</h1>
-      <p>
+      <p className="progress">
         Progress: {solvedCount} / {problems.length}
       </p>
 
-      <input id="inp" placeholder="Enter problem name" />
-      <button onClick={addProblem}>Add</button>
+      <div className="input-group">
+        <input id="inp" placeholder="Enter problem name" />
+        <button className="add-btn" onClick={addProblem}>
+          Add
+        </button>
+      </div>
 
       {problems.map((p, i) => (
-        <div key={i} style={{ margin: "5px 0" }}>
-          {p.name}
+        <div key={i} className="item">
+          <span className={p.solved ? "solved" : ""}>{p.name}</span>
 
-          <button
-            onClick={() => {
-              const updated = [...problems];
-              updated[i].solved = !updated[i].solved;
-              setProblems(updated);
-            }}
-          >
-            {p.solved ? "Solved" : "Mark Done"}
-          </button>
+          <div className="actions">
+            <button
+              className="done-btn"
+              onClick={() => {
+                const updated = [...problems];
+                updated[i].solved = !updated[i].solved;
+                setProblems(updated);
+              }}
+            >
+              {p.solved ? "Undo" : "Done"}
+            </button>
 
-          <button
-            onClick={() => {
-              const updated = problems.filter((_, index) => index !== i);
-              setProblems(updated);
-            }}
-          >
-            Delete
-          </button>
+            <button
+              className="delete-btn"
+              onClick={() => {
+                const updated = problems.filter((_, index) => index !== i);
+                setProblems(updated);
+              }}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </div>

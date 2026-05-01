@@ -1,16 +1,27 @@
-# DSA Tracker
+# DSA Tracker 🚀
 
-A simple web app to track solved DSA problems.
+A simple and clean web app to track solved DSA problems.
 
-## Features
+## 🔥 Features
 
 - Add problems
-- Mark as solved
-- Delete problems
-- Progress tracking
+- Mark as solved ✅
+- Delete problems ❌
+- Progress tracking 📊
 - Data saved using localStorage
 
-## Tech Stack
+## 🛠 Tech Stack
 
 - React
 - JavaScript
+
+## 📸 Screenshot
+
+![App Screenshot](./public/screenshot.png)
+
+## 🚀 How to Run
+
+```bash
+npm install
+npm run dev
+```
