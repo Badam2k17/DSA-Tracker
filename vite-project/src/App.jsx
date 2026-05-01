@@ -53,7 +53,7 @@ function App() {
       </button>
       {problems.length === 0 ? (
         <p style={{ textAlign: "center", marginTop: "20px", color: "#94a3b8" }}>
-          No problems added yet... start grinding 💀🔥
+          No problems added yet... start grinding 🔥
         </p>
       ) : (
         problems.map((p, i) => (
