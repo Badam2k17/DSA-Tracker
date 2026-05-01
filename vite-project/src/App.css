@@ -278,3 +278,20 @@ button {
 button:hover {
   opacity: 0.8;
 }
+.empty {
+  text-align: center;
+  margin-top: 20px;
+  color: #94a3b8;
+}
+
+.clear-btn {
+  margin-top: 10px;
+  width: 100%;
+  background: #f59e0b;
+  color: black;
+}
+.container {
+  max-width: 800px; /* increase from 500px */
+  margin: 50px auto;
+  padding: 30px;
+}

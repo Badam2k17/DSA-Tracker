@@ -24,45 +24,67 @@ function App() {
   return (
     <div className="container">
       <h1>DSA Tracker</h1>
+
       <p className="progress">
-        Progress: {solvedCount} / {problems.length}
+        Solved: {solvedCount} / {problems.length}
+      </p>
+
+      <p style={{ textAlign: "center", color: "#94a3b8", fontSize: "14px" }}>
+        Track your daily coding progress
       </p>
 
       <div className="input-group">
-        <input id="inp" placeholder="Enter problem name" />
+        <input
+          id="inp"
+          placeholder="Enter problem name"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") addProblem();
+          }}
+        />
         <button className="add-btn" onClick={addProblem}>
           Add
         </button>
       </div>
+      <button
+        style={{ marginTop: "10px", width: "100%" }}
+        onClick={() => setProblems([])}
+      >
+        Clear All 🗑️
+      </button>
+      {problems.length === 0 ? (
+        <p style={{ textAlign: "center", marginTop: "20px", color: "#94a3b8" }}>
+          No problems added yet... start grinding 💀🔥
+        </p>
+      ) : (
+        problems.map((p, i) => (
+          <div key={i} className="item">
+            <span className={p.solved ? "solved" : ""}>{p.name}</span>
 
-      {problems.map((p, i) => (
-        <div key={i} className="item">
-          <span className={p.solved ? "solved" : ""}>{p.name}</span>
+            <div className="actions">
+              <button
+                className="done-btn"
+                onClick={() => {
+                  const updated = [...problems];
+                  updated[i].solved = !updated[i].solved;
+                  setProblems(updated);
+                }}
+              >
+                {p.solved ? "Undo" : "Done"}
+              </button>
 
-          <div className="actions">
-            <button
-              className="done-btn"
-              onClick={() => {
-                const updated = [...problems];
-                updated[i].solved = !updated[i].solved;
-                setProblems(updated);
-              }}
-            >
-              {p.solved ? "Undo" : "Done"}
-            </button>
-
-            <button
-              className="delete-btn"
-              onClick={() => {
-                const updated = problems.filter((_, index) => index !== i);
-                setProblems(updated);
-              }}
-            >
-              Delete
-            </button>
+              <button
+                className="delete-btn"
+                onClick={() => {
+                  const updated = problems.filter((_, index) => index !== i);
+                  setProblems(updated);
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 }
